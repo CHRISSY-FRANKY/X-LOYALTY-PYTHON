@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+      <img
+        src="https://portal.jamp.jiji.com/img/icon_Twitter.png"
+        alt="X Logo"
+      />
+      <h2>X Loyalty</h2>
+    </header>
+    <form hx-post="/submit" hx-target="#result" hx-swap="outerHTML">
+      <h1>Happening now</h1>
+      <h2>Try Today.</h2>
+      <input type="text" name="userInput" placeholder="username" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>
