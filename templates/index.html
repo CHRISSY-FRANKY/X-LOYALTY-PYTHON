@@ -4,8 +4,8 @@
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700&display=swap"
-    />
-    <link rel="stylesheet" href="../static/style.css" />
+    /> <!--Include Twitter-like font-->
+    <link rel="stylesheet" href="../static/style.css" /> <!-- Style the page -->
   </head>
 
   <body>
@@ -14,16 +14,16 @@
       <img
         src="https://portal.jamp.jiji.com/img/icon_Twitter.png"
         alt="X Logo"
-      />
+      /> <!-- Include the X logo -->
       <h2>X Loyalty</h2>
     </header>
-    <form hx-post="/submit" hx-target="#result" hx-swap="outerHTML">
+    <form hx-post="/submit" hx-target="#result" hx-swap="outerHTML"> <!-- Where the user submits their username-->
       <h1>Happening now</h1>
       <h2>Try Today.</h2>
-      <input type="text" name="userInput" placeholder="username" />
+      <input type="text" name="userInput" placeholder="Username" />
       <button type="submit">Submit</button>
     </form>
 
-    <script src="script.js"></script>
+    <script src="../static/script.js"></script> <!-- Asists with resizing when the screen ration updates-->
   </body>
 </html>
