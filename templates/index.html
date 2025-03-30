@@ -5,7 +5,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700&display=swap"
     /> <!--Include Twitter-like font-->
-    <link rel="stylesheet" href="/static/style-index.css" /> <!-- Style the page -->
+    <link rel="stylesheet" href="/static/style.css" /> <!-- Style the page -->
   </head>
 
   <body>
@@ -17,13 +17,13 @@
       /> <!-- Include the X logo -->
       <h2>X Loyalty</h2>
     </header>
-    <form hx-post="/submit" hx-target="#result" hx-swap="outerHTML"> <!-- Where the user submits their username-->
+    <form hx-post="/submit_username" hx-swap="innerHTML"> <!-- Where the user submits their username-->
       <h1>Happening now</h1>
       <h2>Try Today.</h2>
-      <input type="text" name="userInput" placeholder="Username" />
+      <input type="text" name="username" placeholder="Username" />
       <button type="submit">Submit</button>
     </form>
 
-    <script src="/static/script-index.js"></script> <!-- Asists with resizing when the screen ration updates-->
+    <script src="/static/script.js"></script> <!-- Asists with resizing when the screen ration updates -->
   </body>
 </html>
