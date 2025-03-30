@@ -22,6 +22,7 @@ img {
   object-fit: contain; /* maintain aspect ratio */
   max-width: 33vh;
   max-height: 33vh;
+  padding-top: 4vh;
 }
 
 header.viewport-less-than-screen {
@@ -65,7 +66,7 @@ form input {
   width: 33vw;
   height: 5vh;
   border: 0.5px solid darkgray;
-  border-radius: 5px;
+  border-radius: 2vh;
   background-color: black;
   color: white;
   font-size: 1em;
