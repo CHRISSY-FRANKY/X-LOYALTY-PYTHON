@@ -1,73 +1,86 @@
 body {
-    background-color: black;
-    margin: 0; /* remove unused space */
-  
-    font-family: "Libre Franklin", sans-serif; /* x.com base font */
-    color: white;
-    
-    display: flex;
-    flex-direction: row;
-  }
-  
-  header {
-    display: flex; /* is now a flex container */
-    flex-direction: column; /* a column flex container */
-    align-items: center; /* center horizontally */
-    justify-content: center; /* center vertically */
-    width: 50vw;
-    height: 100vh;
-  }
-  
-  img {
-    object-fit: contain; /* maintain aspect ratio */
-    max-width: 33vh;
-    max-height: 33vh;
-  }
-  header.viewport-less-than-screen { /* adujust for minimized window */
-    width: 100vw;
-    height: auto;
-    padding-top: 1vh;
-  }
-  
-  form.viewport-less-than-screen {
-    width: 100vw;
-    height: auto;
-    padding-top: 1vh;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 50vw;
-    height: 100vh;
-  }
-  
-  h1 {
-    font-size: 7vh;
-  }
-  
-  h2 {
-    font-size: 4vh;
-  }
-  
-  input[type="text"]::placeholder {
-    text-align: center;
-  }
-  
-  input[type="text"] {
-    width: 22vw;
-    height: 5vh;
-    border: 0.5px solid darkgray;
-    border-radius: 5px;
-    background-color: black;
-    color: white;
-    font-size: 1em;
-    font-family: "Libre Franklin", sans-serif; /* keep the twitter font */
-  }
-  
-  input[type="text"]:focus {
-    outline: none;
-    border: 2px solid dodgerblue; /* the twitter blue on focus */
-  }
+  background-color: black;
+  margin: 0; /* remove unused space */
+
+  font-family: "Libre Franklin", sans-serif; /* x.com base font */
+  color: white;
+
+  display: flex;
+  flex-direction: row;
+}
+
+header {
+  display: flex; /* is now a flex container */
+  flex-direction: column; /* a column flex container */
+  align-items: center; /* center horizontally */
+  justify-content: center; /* center vertically */
+  width: 50vw;
+  height: 100vh;
+}
+
+img {
+  object-fit: contain; /* maintain aspect ratio */
+  max-width: 33vh;
+  max-height: 33vh;
+}
+header.viewport-less-than-screen {
+  /* adujust for minimized window */
+  width: 100vw;
+  height: auto;
+  padding-top: 1vh;
+}
+
+form.viewport-less-than-screen {
+  width: 100vw;
+  height: auto;
+  padding-top: 1vh;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 7vh;
+}
+
+h2 {
+  font-size: 4vh;
+}
+
+input[type="text"]::placeholder {
+  text-align: center;
+}
+
+input[type="text"] {
+  width: 22vw;
+  height: 5vh;
+  border: 0.5px solid darkgray;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  font-size: 1em;
+  font-family: "Libre Franklin", sans-serif; /* keep the twitter font */
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: 2px solid dodgerblue; /* the twitter blue on focus */
+}
+
+form button {
+  width: 22vw;
+  height: 5vh;
+  border-radius: 2vh;
+  border-color: transparent;
+  background-color: dodgerblue;
+  color: white;
+  font-size: 1em;
+  margin-top: 1em;
+  font-family: "Libre Franklin", sans-serif; /* keep the twitter font */
+}
