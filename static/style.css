@@ -23,6 +23,7 @@ img {
   max-width: 33vh;
   max-height: 33vh;
 }
+
 header.viewport-less-than-screen {
   /* adujust for minimized window */
   width: 100vw;
@@ -53,12 +54,15 @@ h2 {
   font-size: 4vh;
 }
 
-input[type="text"]::placeholder {
-  text-align: center;
+form input.viewport-less-than-screen {
+  width: 50vw;
+  height: auto;
+  padding-top: 1vh;
 }
 
-input[type="text"] {
-  width: 22vw;
+form input {
+  text-align: center;
+  width: 33vw;
   height: 5vh;
   border: 0.5px solid darkgray;
   border-radius: 5px;
@@ -68,13 +72,19 @@ input[type="text"] {
   font-family: "Libre Franklin", sans-serif; /* keep the twitter font */
 }
 
-input[type="text"]:focus {
+form input:focus {
   outline: none;
   border: 2px solid dodgerblue; /* the twitter blue on focus */
 }
 
+form button.viewport-less-than-screen {
+  width: 50vw;
+  height: auto;
+  padding-top: 1vh;
+}
+
 form button {
-  width: 22vw;
+  width: 33vw;
   height: 5vh;
   border-radius: 2vh;
   border-color: transparent;
