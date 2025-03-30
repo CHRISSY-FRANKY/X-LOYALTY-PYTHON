@@ -2,11 +2,15 @@ function reviewViewportSize() { // Function to review viewport width is less tha
     if (window.innerWidth < (0.5 * window.screen.width)) {
         document.querySelector('header').classList.add('viewport-less-than-screen');
         document.querySelector('form').classList.add('viewport-less-than-screen');
+        document.querySelector('form button').classList.add('viewport-less-than-screen');
+        document.querySelector('form input').classList.add('viewport-less-than-screen');
         document.body.style.display = 'block'; 
         document.body.style.flexDirection = 'column';
     } else {
         document.querySelector('header').classList.remove('viewport-less-than-screen');
         document.querySelector('form').classList.remove('viewport-less-than-screen');
+        document.querySelector('form button').classList.remove('viewport-less-than-screen');
+        document.querySelector('form input').classList.remove('viewport-less-than-screen');
         document.body.style.display = 'flex';
         document.body.style.flexDirection = 'row';
     }
