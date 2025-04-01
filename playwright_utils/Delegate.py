@@ -1,5 +1,5 @@
 class Playwright_Delegate:
-
+    
     _instance = None # singleton
 
     @classmethod
