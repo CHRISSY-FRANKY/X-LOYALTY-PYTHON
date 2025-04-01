@@ -11,13 +11,13 @@ class Playwright_Delegate:
             cls._instance = cls()
         return cls._instance
     
-    def __init__(self):
+    def __init__(self): # initialises the playwright instance
         self._playwright = sync_playwright().start()
     
-    def stop(self):
+    def stop(self): # stop the playwright instance
         self._playwright.stop()
 
-    def load_page(self, url, page=None):
+    def load_page(self, url, page=None): # loads a page by creating one and/or navigating to a url 
         try:
             browser = self._playwright.firefox.launch(headless=False)
             page = browser.new_page()
