@@ -13,3 +13,7 @@ class Playwright_Delegate:
     
     def __init__(self):
         self._playwright = sync_playwright().start()
+    
+    def stop(self):
+        self._playwright.stop()
+        
