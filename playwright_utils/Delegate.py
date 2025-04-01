@@ -17,12 +17,12 @@ class Playwright_Delegate:
     def stop(self):
         self._playwright.stop()
 
-    def load_page(self, url):
+    def load_page(self, url, page=None):
         try:
             browser = self._playwright.firefox.launch(headless=False)
             page = browser.new_page()
             page.goto(url)
-            return True
+            return page
         except Exception as e:
-            return False
+            return None
         
