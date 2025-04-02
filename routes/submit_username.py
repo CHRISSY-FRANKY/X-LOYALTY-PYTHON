@@ -12,7 +12,12 @@ def submit_username():
     print(username) # print the username
     print(verify_username(username))
     page = Playwright_Delegate.get_instance().load_page(f"https://x.com/{username}")
-    if page is None:
+
+    #page.wait_for_selector('text="This account doesn’t exist"') # waits to see if the user doesn't exist
+    page.wait_for_selector('text="Sign in to X"') # waits to see if the user does exist
+
+    print("DONE")
+    if page is not None:
         return render_template("username_existant.html")
     else:
         return render_template("username_error.html")
