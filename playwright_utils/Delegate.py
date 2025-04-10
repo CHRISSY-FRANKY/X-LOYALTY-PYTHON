@@ -17,6 +17,12 @@ class Playwright_Delegate:
             self._playwright.stop()
         elif not self._playwright:
             self._playwright = sync_playwright().start() # just start it
+    
+    def start_browser(self): # start browser if it exists but not running or not started
+        if self._browser and not self._browser.is_running(): # exists but not running
+            self._browser.stop()
+        elif not self._browser:
+            self._browser = self._playwright.firefox.launch(headless=True) # just start it
 
     def stop(self): # stop the playwright and browser instance
         if self._browser:
