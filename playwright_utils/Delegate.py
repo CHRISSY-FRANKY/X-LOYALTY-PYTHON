@@ -20,13 +20,15 @@ class Playwright_Delegate:
             self._playwright.stop()
             print("Playwright stopped")
 
-    def load_page(self, url, page=None): # loads a page by recreating a playwright instance 
+    def load_page(self, url, page=None): # loads page by recreating playwright instance 
         self._playwright = sync_playwright().start()
         try:
-            browser = self._playwright.firefox.launch(headless=True)
-            page = browser.new_page()
-            page.goto(url)
+            self._browser = self._playwright.firefox.launch(headless=True) # launch new browser instance
+            if not page: # create a new page
+                page = self._browser.new_page()
+            page.goto(url) # navigate to new url
             return page
         except Exception as e:
+            print(f"Error loading page: {e}")
             return None
         
