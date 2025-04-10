@@ -1,30 +1,55 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Include Twitter like font -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700&display=swap"
-    /> <!--Include Twitter-like font-->
-    <link rel="stylesheet" href="/static/style.css" /> <!-- Style the page -->
-    <link rel="stylesheet" href="/static/spinner.css" /> <!--Style the spinner-->
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/spinner.css" />
   </head>
-
   <body>
     <header>
       <script src="https://unpkg.com/htmx.org@1.8.4"></script>
-      <img
-        src="../static/images/x.png"
-        alt="X Logo"
-      /> <!-- Include the X logo -->
+      <!-- Include the X logo-->
+      <img src="../static/images/x.png" alt="X Logo" />
       <h2>X Loyalty</h2>
     </header>
-    <form hx-post="/submit_username" hx-swap="innerHTML"> <!-- Where the user submits their username-->
-      <h1>Happening now</h1>
-      <h2>Try Today.</h2>
-      <input type="text" name="username" placeholder="Username" />
-      <button type="submit">Submit</button>
+    <!-- Where the user submits their username-->
+    <form id="username-form" hx-post="/submit_username" hx-swap="innerHTML">
+      <h1 class="stay">Happening now</h1>
+      <h2 class="stay" id="message">Try Today.</h2>
+      <input id="username" type="text" name="username" placeholder="Username" />
+      <button type="submit" id="submit_button">Submit</button>
+      <div class="spinner" style="display: none"></div>
     </form>
 
-    <script src="/static/script.js"></script> <!-- Asists with resizing when the screen ration updates -->
+    <script>
+      document
+        .getElementById("submit_button")
+        .addEventListener("click", function (event) {
+          // Show only text and the spinner immediately when the button is clicked
+          const form = document.getElementById("username-form");
+          const formChildren = form.children;
+          for (let child of formChildren) {
+            if (
+              child.classList.contains("spinner") ||
+              child.classList.contains("stay")
+            ) {
+              child.style.display = "block"; // Explicitly show spinner and stay elements
+              if (child.id == "message")
+            {
+              const usernameInput = form.querySelector("input[name='username']");
+              usernameText = usernameInput.value;
+              child.innerHTML = "Searching for " + usernameText;
+            }
+            } else {
+              child.style.display = "none"; // Hide everything else
+            }
+          }
+        });
+    </script>
+    <script src="/static/script.js"></script>
   </body>
 </html>
