@@ -15,8 +15,9 @@ class Playwright_Delegate:
     def start_playwright(self): # start playwright if it exists but not running or not started
         if self._playwright and not self._playwright.is_running(): # exists but not running
             self._playwright.stop()
-        self._playwright = sync_playwright().start() # just start it
-    
+        elif not self._playwright:
+            self._playwright = sync_playwright().start() # just start it
+
     def stop(self): # stop the playwright and browser instance
         if self._browser:
             self._browser.close()
