@@ -34,7 +34,7 @@ class Playwright_Delegate:
             self._playwright = sync_playwright().start() # just start it
             logger.info("Playwright started")
     
-    def start_browser(self): # check if browser exists and is still working
+    def start_browser(self, headless=True): # check if browser exists and is still working
         if self._browser: # if browser exists
             try:
                 self._browser.contexts() # see if browser is still working
@@ -43,7 +43,7 @@ class Playwright_Delegate:
                 self._browser.close()
                 self._browser = None
         if not self._browser: # just start it
-            self._browser = self._playwright.firefox.launch(headless=True) # just start it
+            self._browser = self._playwright.firefox.launch(headless=headless) # just start it
             logger.info("Browser started")
 
     def stop(self): # stop the playwright and browser instance
@@ -56,9 +56,9 @@ class Playwright_Delegate:
             logger.info("Playwright stopped")
             self._playwright = None
 
-    def load_page(self, url, page=None): # loads page by recreating playwright instance 
+    def load_page(self, url, page=None, headless=True): # loads page by recreating playwright instance 
         self.start_playwright()
-        self.start_browser()
+        self.start_browser(headless=headless)
         try:
             if not page:  # create a new page if none is provided
                 page = self._browser.new_page()
