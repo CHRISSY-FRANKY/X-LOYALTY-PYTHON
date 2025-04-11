@@ -63,11 +63,11 @@ def submit_username():
     
     if username_exists is True: # username exists
         logger.info(f"Username exists: {username}")
-        return render_template("username_existant.html")
+        return render_template("username_existant.html", username=username)
     elif username_exists is False: # username doesn't exist
         logger.info(f"Username does not exist: {username}")
-        return render_template("username_inexistant.html")
+        return render_template("username_inexistant.html", username=username)
     else: # connection error or unknown issue
         logger.warning(f"Connection error or unknown issue for username: {username}")
-        return render_template("connection_error.html")
+        return render_template("connection_error.html", username=username)
    
