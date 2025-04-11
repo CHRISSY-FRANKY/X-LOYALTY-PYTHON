@@ -46,9 +46,11 @@ class Playwright_Delegate:
         if self._browser:
             self._browser.close()
             print("Browser closed")
+            self._browser = None  # Set to None after closing
         if self._playwright:
             self._playwright.stop()
             print("Playwright stopped")
+            self._playwright = None
 
     def load_page(self, url, page=None): # loads page by recreating playwright instance 
         self.start_playwright()
