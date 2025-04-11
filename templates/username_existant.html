@@ -1,5 +1,6 @@
-<form hx-get="/username_sign_in" hx-swap="innerHTML"> <!-- Where the user waits for the next page to load-->
+<form hx-post="/signin_username" hx-swap="innerHTML"> <!-- Where the user waits for the next page to load-->
     <h1>Happening now</h1>
     <h2>Username <strong>{{ username }}</strong> exists!</h2>
+    <input type="hidden" name="username" value="{{ username }}">
     <button type="submit">Sign in to X</button>
 </form>
