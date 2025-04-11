@@ -13,8 +13,16 @@ class Playwright_Delegate:
         return cls._instance
     
     def start_playwright(self): # start playwright if it exists but not running or not started
-        if self._playwright and not self._playwright.is_running(): # exists but not running
-            self._playwright.stop()
+        try:
+            if self._playwright and not self._playwright.is_running(): # exists but not running
+                self._playwright.stop()
+                self._playwright = None
+        except Exception as e:
+            print(f"Error checking if playwright is running: {e}")
+            try: # assume playwright is not running
+                self._playwright.stop()
+            except:
+                pass
             self._playwright = None
         if not self._playwright:
             self._playwright = sync_playwright().start() # just start it
