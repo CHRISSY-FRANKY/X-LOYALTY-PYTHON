@@ -15,6 +15,7 @@ class Playwright_Delegate:
     def start_playwright(self): # start playwright if it exists but not running or not started
         try:
             if self._playwright and not self._playwright.is_running(): # exists but not running
+                print("Playwright exists but is not running, restarting...")
                 self._playwright.stop()
                 self._playwright = None
         except Exception as e:
@@ -24,6 +25,7 @@ class Playwright_Delegate:
             except:
                 pass
             self._playwright = None
+            
         if not self._playwright:
             self._playwright = sync_playwright().start() # just start it
             print("Playwright started")
@@ -54,7 +56,9 @@ class Playwright_Delegate:
         try:
             if not page:  # create a new page if none is provided
                 page = self._browser.new_page()
+                print(f"Created new page for URL: {url}")
             page.goto(url) # navigate to new url
+            print(f"Navigated to URL: {url}")
             return page
         except Exception as e:
             print(f"Error loading page: {e}")
