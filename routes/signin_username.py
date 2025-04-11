@@ -1,7 +1,50 @@
 from main_routes import main_routes # import the route manager 
-from flask import redirect
+from flask import request
+from flask import render_template
 from playwright_utils.Delegate import Playwright_Delegate
 import logging
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__) # setup logging
+
+def extract_counts(followers_following_text):
+    pass
+
+@main_routes.route("/signin_username", methods=["POST"])
+def signin_username():
+    """
+    This route is used to sign in to a username and get the followers and following counts
+    """
+    username = request.form["username"]
+    delegate = Playwright_Delegate.get_instance()
+
+    page = delegate.load_page(f"https://x.com/{username}", headless=False) # load profile page
+    logger.info(f"LOADED https://x.com/{username}")
+
+    page.wait_for_url(f"https://x.com/i/flow/login?redirect_after_login=%2F{username}") # wait for login page
+    logger.info(f"LOADED https://x.com/i/flow/login?redirect_after_login=%2F{username}")
+    
+    page.wait_for_url(f"https://x.com/{username}") # wait for profile page
+    logger.info(f"LOADED https://x.com/{username}")
+    page.wait_for_load_state("domcontentloaded") # wait for page to load
+    
+    element = page.query_selector(".css-175oi2r.r-13awgt0.r-18u37iz.r-1w6e6rj") # find element
+    
+    try:   
+        if element: # get followers and following counts
+            text = element.text_content().strip()
+            logger.info(f"Found element with text: {text}")
+            return f"Element text: {text}"
+        else: # if element not found
+            logger.warning("Element not found with the specified class")
+            return render_template("connection_error.html") 
+    except Exception as e: # handle errors
+        logger.error(f"Error: {e}")
+        return render_template("connection_error.html")
+    finally: # clean up resources
+        try:
+            delegate.stop()
+        except Exception as e:
+            logger.error(f"Error stopping delegate: {e}")
+   
+    
