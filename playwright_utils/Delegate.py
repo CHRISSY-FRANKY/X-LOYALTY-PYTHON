@@ -46,7 +46,7 @@ class Playwright_Delegate:
         if self._browser:
             self._browser.close()
             print("Browser closed")
-            self._browser = None  # Set to None after closing
+            self._browser = None
         if self._playwright:
             self._playwright.stop()
             print("Playwright stopped")
