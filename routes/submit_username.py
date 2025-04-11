@@ -12,7 +12,7 @@ def verify_username(username) -> bool:
     if page is None:
         return None
     try:
-        page.wait_for_selector('text="This account doesn’t exist"', timeout=6900) 
+        page.wait_for_selector('text="This account doesn\'t exist"', timeout=6900) 
         return False  # username doesn't exist
     except Exception as e:
         try:
@@ -24,15 +24,24 @@ def verify_username(username) -> bool:
 
 @main_routes.route("/submit_username", methods=["POST"]) # create the submit_username route 
 def submit_username():
-    username = request.form["username"] # get the username
-    print(username) # print the username
-    username_exists = verify_username(username) # verify username
-    Playwright_Delegate.get_instance().stop()
-    if username_exists is True:
-        print("USERNAME EXISTS!")
+    """
+    Handle the submission of a username for verification.
+    
+    Returns:
+        str: The rendered template based on the verification result
+    """
+    username = request.form["username"] # get username from form
+    logger.info(f"Verifying username: {username}")
+    
+    username_exists = verify_username(username)
+    
+    if username_exists is True: # username exists
+        logger.info(f"Username exists: {username}")
         return render_template("username_existant.html")
-    elif username_exists is False:
-        print("USERNAME INEXISTANT!")
+    elif username_exists is False: # username doesn't exist
+        logger.info(f"Username does not exist: {username}")
         return render_template("username_inexistant.html")
-    else:
+    else: # connection error or unknown issue
+        logger.warning(f"Connection error or unknown issue for username: {username}")
         return render_template("connection_error.html")
+   
