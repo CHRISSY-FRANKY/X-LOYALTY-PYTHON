@@ -41,6 +41,8 @@ class Playwright_Delegate:
         self.start_playwright()
         self.start_browser()
         try:
+            if not page:  # create a new page if none is provided
+                page = self._browser.new_page()
             page.goto(url) # navigate to new url
             return page
         except Exception as e:
