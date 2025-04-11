@@ -2,6 +2,10 @@ from main_routes import main_routes # import the route manager
 from flask import request # request fields
 from flask import render_template
 from playwright_utils.Delegate import Playwright_Delegate
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__) # setup logging
 
 def verify_username(username) -> bool:
     page = Playwright_Delegate.get_instance().load_page(f"https://x.com/{username}") # load the username
