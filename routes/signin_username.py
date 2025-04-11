@@ -7,8 +7,26 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__) # setup logging
 
-def extract_counts(followers_following_text):
-    pass
+def extract_counts(text):
+    """
+    Extract followers and following counts from the text.
+    
+    Args:
+        text (str): The text containing followers and following counts.
+        
+    Returns:
+        dict: A dictionary with 'following' and 'followers' counts.
+    """
+    parts = text.split("Following") # split the text by "Following"
+    
+    following = int(parts[0].strip()) # get the following count
+    
+    followers = int(parts[1].split("Followers")[0].strip()) # get the followers count
+    
+    return {
+        'following': following,
+        'followers': followers
+    }
 
 @main_routes.route("/signin_username", methods=["POST"])
 def signin_username():
@@ -34,7 +52,11 @@ def signin_username():
         if element: # get followers and following counts
             text = element.text_content().strip()
             logger.info(f"Found element with text: {text}")
-            return f"Element text: {text}"
+            
+            counts = extract_counts(text) # extract the counts from the text
+            logger.info(f"Extracted counts: {counts}")
+            
+            return counts
         else: # if element not found
             logger.warning("Element not found with the specified class")
             return render_template("connection_error.html") 
