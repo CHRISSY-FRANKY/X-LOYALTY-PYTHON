@@ -27,12 +27,12 @@ def verify_username(username) -> bool:
             return None
             
         try: # check if the account doesn't exist
-            page.wait_for_selector('text="This account doesn\'t exist"', timeout=5000)
+            page.wait_for_selector('text="This account doesn’t exist"', timeout=6900)
             logger.info(f"Username does not exist: {username}")
             return False  # username doesn't exist
         except Exception:
             try: # check if the account exists (by looking for the sign-in prompt)
-                page.wait_for_selector('text="Sign in to X"', timeout=5000)
+                page.wait_for_selector('text="Sign in to X"', timeout=6900)
                 logger.info(f"Username exists: {username}")
                 return True  # username exists
             except Exception as e:
