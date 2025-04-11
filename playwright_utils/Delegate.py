@@ -26,9 +26,7 @@ class Playwright_Delegate:
             except Exception: # restart browser if not working
                 self._browser.close()
                 self._browser = None    
-                
-        # If browser doesn't exist, create it
-        if not self._browser:
+        if not self._browser: # just start it
             self._browser = self._playwright.firefox.launch(headless=True) # just start it
 
     def stop(self): # stop the playwright and browser instance
