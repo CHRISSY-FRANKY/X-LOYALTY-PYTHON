@@ -28,6 +28,30 @@ def extract_counts(text):
         'followers': followers
     }
 
+def build_statistics_summary(counts):
+    """
+    Create a summary about loyal or unloyal users based on follower and following counts.
+    
+    Args:
+        counts (dict): A dictionary with 'following' and 'followers' counts.
+        
+    Returns:
+        str: A message about the follower and following statistics of the user.
+    """
+    followers = counts['followers'] # get the counts
+    following = counts['following']
+    
+    diff = abs(followers - following) # get the difference
+    
+    loyalty_type = "loyal" if followers > following else "unloyal" # determine if the users are loyal or unloyal
+    
+    message = ( # build the message
+        f"You have {followers} followers and you are following {following}.<br>"
+        f"You potentially have {diff} {loyalty_type} users."
+    )
+    
+    return message
+
 @main_routes.route("/signin_username", methods=["POST"])
 def signin_username():
     """
@@ -56,7 +80,7 @@ def signin_username():
             counts = extract_counts(text) # extract the counts from the text
             logger.info(f"Extracted counts: {counts}")
             
-            return counts
+            return build_statistics_summary(counts)
         else: # if element not found
             logger.warning("Element not found with the specified class")
             return render_template("connection_error.html") 
