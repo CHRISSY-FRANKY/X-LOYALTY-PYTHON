@@ -44,13 +44,11 @@ def build_statistics_summary(counts):
     diff = abs(followers - following) # get the difference
     
     loyalty_type = "loyal" if followers > following else "unloyal" # determine if the users are loyal or unloyal
+
+    follower_following_counts = f"You have {followers} followers and you are following {following}."
+    potential_loyal_users = f"You potentially have {diff} {loyalty_type} users."
     
-    message = ( # build the message
-        f"You have {followers} followers and you are following {following}.<br>"
-        f"You potentially have {diff} {loyalty_type} users."
-    )
-    
-    return message
+    return [follower_following_counts, potential_loyal_users]
 
 @main_routes.route("/signin_username", methods=["POST"])
 def signin_username():
@@ -80,7 +78,8 @@ def signin_username():
             counts = extract_counts(text) # extract the counts from the text
             logger.info(f"Extracted counts: {counts}")
             
-            return build_statistics_summary(counts)
+            summary = build_statistics_summary(counts)
+            return render_template("basic_statistics.html", basic_statistics=summary[0], potential_loyal_users=summary[1])
         else: # if element not found
             logger.warning("Element not found with the specified class")
             return render_template("connection_error.html") 
