@@ -3,6 +3,7 @@ import main_routes
 from routes.index import index as index
 from routes.submit_username import submit_username as submit_username
 from routes.signin_username import signin_username as signin_username
+from routes.get_advanced_statistics import get_advanced_statistics as get_advanced_statistics
 
 app = Flask(__name__) # create flask application instance
 
