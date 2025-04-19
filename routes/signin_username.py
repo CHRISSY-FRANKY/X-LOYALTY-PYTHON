@@ -79,7 +79,7 @@ def signin_username():
             logger.info(f"Extracted counts: {counts}")
             
             summary = build_statistics_summary(counts)
-            return render_template("basic_statistics.html", basic_statistics=summary[0], potential_loyal_users=summary[1])
+            return render_template("basic_statistics.html", basic_statistics=summary[0], potential_loyal_users=summary[1], followers=counts['followers'], following=counts['following'], username=username)
         else: # if element not found
             logger.warning("Element not found with the specified class")
             return render_template("connection_error.html") 
