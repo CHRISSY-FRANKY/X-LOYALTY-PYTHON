@@ -1,8 +1,10 @@
-<form hx-post="/get_advanced_statistics" hx-swap="innerHTML">
+<form id="username-form" hx-post="/get_advanced_statistics" hx-swap="outerHTML">
   <h1 class="stay">Happening now</h1>
   <h2 class="stay" id="basic_statistics">{{basic_statistics}}<br>{{potential_loyal_users}}</h2>
   <input type="hidden" name="username" value="{{ username }}">
   <input type="hidden" name="followers" value="{{ followers }}">
   <input type="hidden" name="following" value="{{ following }}">
-  <button type="submit">Get Advanced Statistics</button>
+  <div class="spinner" style="display: none"></div>
+  <button type="submit" id="submit_button">Get Advanced Statistics</button>
+  <script src="/static/scripts/displayOnlySpinnerAndTextOnSubmit.js"></script>
 </form>
