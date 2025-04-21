@@ -1,8 +1,8 @@
 document
     .getElementById("submit_button")
-    .addEventListener("click", function (event) {
-        // Show only text and the spinner immediately when the button is clicked
-        const form = document.getElementById("username-form");
+    .addEventListener("click", function (event) { // Show only text and the spinner immediately when the button is clicked
+        console.log("clicked")
+        const form = document.getElementById("username-form"); 
         const formChildren = form.children;
         for (let child of formChildren) {
             if (
