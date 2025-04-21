@@ -28,6 +28,7 @@ def extract_following_usernames(username, following_count):
 
     total_count = 0 # initialize total count
     following_usernames = set() # initialize found usernames set
+    previous_texts = None
     while total_count < following_count: # loop until total count is equal to following count
         while True: # loop until element is removed
             element = page.query_selector('.css-175oi2r.r-vacyoi.r-ttdzmv') # locate element
@@ -36,6 +37,9 @@ def extract_following_usernames(username, following_count):
             else:
                 break
         elements = page.locator(".css-1jxf684.r-bcqeeo.r-1ttztb7.r-qvutc0.r-poiln3") # located elements
+        if previous_texts == elements.all_inner_texts(): # if same elements are found again, break the loop
+            break
+        previous_texts = elements.all_inner_texts()
         element_count = elements.count() # get count of matching elements on the current page
         for i in range(element_count): # iterate over the elements
             element = elements.nth(i)
