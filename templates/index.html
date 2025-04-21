@@ -17,14 +17,14 @@
       <h2>X Loyalty</h2>
     </header>
     <!-- Where the user submits their username-->
-    <form id="username-form" hx-post="/submit_username" hx-swap="innerHTML">
+    <form id="username-form" hx-post="/submit_username" hx-swap="outerHTML">
       <h1 class="stay">Happening now</h1>
       <h2 class="stay" id="message">Try Today.</h2>
       <input id="username" type="text" name="username" placeholder="Username" />
       <button type="submit" id="submit_button">Submit</button>
       <div class="spinner" style="display: none"></div>
+      <script src="/static/scripts/displayOnlySpinnerAndTextOnSubmit.js"></script>
     </form>
-    <script src="/static/scripts/displayOnlySpinnerAndTextOnSubmit.js"></script>
     <script src="/static/scripts/script.js"></script>
   </body>
 </html>
