@@ -85,7 +85,7 @@ def extract_followers_usernames(username, followers_count):
             else:
                 break
         elements = page.locator(".css-1jxf684.r-bcqeeo.r-1ttztb7.r-qvutc0.r-poiln3") # located elements
-        if previous_texts == elements.all_inner_texts():
+        if previous_texts == elements.all_inner_texts(): # if same elements are found again, break the loop
             break
         previous_texts = elements.all_inner_texts()
         element_count = elements.count() # get count of matching elements on the current page
