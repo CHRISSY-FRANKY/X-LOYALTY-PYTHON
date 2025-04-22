@@ -1,4 +1,4 @@
-<form id="username-form" hx-post="/get_advanced_statistics" hx-swap="outerHTML">
+<form id="username-form" hx-post="/get_advanced_statistics" hx-target="body" hx-swap="innerHTML">
   <h1 class="stay">Happening now</h1>
   <h2 class="stay" id="basic_statistics">{{basic_statistics}}<br>{{potential_loyal_users}}</h2>
   <input type="hidden" name="username" value="{{ username }}">
