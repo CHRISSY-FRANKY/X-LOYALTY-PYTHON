@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Include Twitter like font -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700&display=swap"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/spinner.css" />
+  </head>
+  <body>
+    <header>
+      <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+      <!-- Include the X logo-->
+      <img src="../static/images/x.png" alt="X Logo" />
+      <h2>X Loyalty</h2>
+    </header>
+    <!-- Where the user submits their username-->
+    <form id="username-form" hx-post="/submit_username" hx-swap="outerHTML">
+     <h1>Following not followers</h1>
+     <ul>
+      {% for username in following_not_followers %}
+        <li>{{ username }}</li>
+      {% endfor %}
+     </ul>
+     <h1>Followers not following</h1>
+     <ul>
+      {% for username in followers_not_following %}
+        <li>{{ username }}</li>
+      {% endfor %}
+     </ul>
+    </form>
+    <script src="/static/scripts/script.js"></script>
+  </body>
+</html>
