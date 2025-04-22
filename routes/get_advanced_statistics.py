@@ -55,7 +55,7 @@ def extract_following_usernames(username, following_count):
         if total_count >= following_count: # if we've found enough usernames, break the loop
             break
         page.evaluate("window.scrollBy(0, window.innerHeight)") # scroll down to load more elements
-        time.sleep(1) # wait for new content to load
+        time.sleep(0.5) # wait for new content to load
     logger.info(f"Found {total_count} elements (unique usernames)")
     return following_usernames
 
@@ -107,7 +107,7 @@ def extract_followers_usernames(username, followers_count):
         if total_count >= followers_count: # if we've found enough usernames, break the loop
             break
         page.evaluate("window.scrollBy(0, window.innerHeight)") # scroll down to load more elements
-        time.sleep(1) # wait for new content to load
+        time.sleep(0.5) # wait for new content to load
     logger.info(f"Found {total_count} elements (unique usernames)")
     for follower in followers_usernames:
         print(follower)
@@ -120,7 +120,9 @@ def get_advanced_statistics():
     """
     username = request.form["username"]
     followersCount = request.form["followers"]
-    # followingCount = request.form["following"]
-    # following_usernames = extract_following_usernames(username, int(followingCount))
+    followingCount = request.form["following"]
+    following_usernames = extract_following_usernames(username, int(followingCount))
     followers_usernames = extract_followers_usernames(username, int(followersCount))
-    return "^0^"
+    following_not_followers = following_usernames - followers_usernames # following usernames that are not following back
+    followers_not_following = followers_usernames - following_usernames # followers usernames that are not being followed back
+    return render_template("advanced_statistics.html", following_not_followers=following_not_followers, followers_not_following=followers_not_following)
