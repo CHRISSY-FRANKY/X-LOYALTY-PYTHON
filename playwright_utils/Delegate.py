@@ -18,10 +18,9 @@ class Playwright_Delegate:
     
     def start_playwright(self): # start playwright if it exists but not running or not started
         try:
-            if self._playwright and not self._playwright.is_running(): # exists but not running
-                logger.info("Playwright exists but is not running, restarting...")
-                self._playwright.stop()
-                self._playwright = None
+            if not self._playwright:
+                self._playwright = sync_playwright().start() # just start it
+                logger.info("Playwright started")
         except Exception as e:
             logger.error(f"Error checking if playwright is running: {e}")
             try: # assume playwright is not running
@@ -29,20 +28,26 @@ class Playwright_Delegate:
             except:
                 pass
             self._playwright = None
-            
-        if not self._playwright:
-            self._playwright = sync_playwright().start() # just start it
-            logger.info("Playwright started")
     
     def start_browser(self, headless=True): # check if browser exists and is still working
         if self._browser: # if browser exists
             try:
-                self._browser.contexts() # see if browser is still working
+                if self._browser.is_connected() and self._browser.contexts(): # see if browser is still working
+                    logger.info("Browser is still working")
+                else:
+                    logger.info("Browser is not working, restarting...")
+                    self._browser.close()
+                    self._browser = None
+                    self._browser = self._playwright.firefox.launch(headless=headless) # just start it
+                    logger.info("Browser started")
             except Exception: # restart browser if not working
                 logger.info("Browser is not working, restarting...")
-                self._browser.close()
+                if self._browser:
+                    self._browser.close()
                 self._browser = None
-        if not self._browser: # just start it
+                self._browser = self._playwright.firefox.launch(headless=headless) # just start it
+                logger.info("Browser started")
+        else: # just start it
             self._browser = self._playwright.firefox.launch(headless=headless) # just start it
             logger.info("Browser started")
 
@@ -58,7 +63,8 @@ class Playwright_Delegate:
 
     def load_page(self, url, page=None, headless=True): # loads page by recreating playwright instance 
         self.start_playwright()
-        self.start_browser(headless=headless)
+        if not self._browser:
+            self.start_browser(headless=headless)
         try:
             if not page:  # create a new page if none is provided
                 page = self._browser.new_page()
