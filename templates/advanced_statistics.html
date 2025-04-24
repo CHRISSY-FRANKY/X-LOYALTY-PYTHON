@@ -6,31 +6,33 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700&display=swap"
     />
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
     <link rel="stylesheet" href="/static/style.css" />
     <link rel="stylesheet" href="/static/spinner.css" />
   </head>
-  <body>
-    <header>
-      <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+  <body style="flex-direction: column;">
+    <header style="height: 5vh; width: 100vw;">
+     
       <!-- Include the X logo-->
-      <img src="../static/images/x.png" alt="X Logo" />
-      <h2>X Loyalty</h2>
+      <img style=" width: 5vh; height: 5vh;" src="../static/images/x.png" alt="X Logo" />
     </header>
     <!-- Where the user submits their username-->
-    <form id="username-form" hx-post="/submit_username" hx-swap="outerHTML">
-     <h1>Following not followers</h1>
+   
+    <div class="usernames" style="border-style:solid; border-color: white; border-width: 0.25vw; border-radius: 0.5vw; height: 81vh; width: 95.5vw; margin-top: 9vh; margin-left: 2vw; ">
+     <button style="background-color: black; color: white; border-width: 0.125vw; border-style: solid; border-color:white; width:auto; height: 5vh;  border-bottom-right-radius: 0.5vw;">Following not followers</button>
+     <button style="background-color: black; color: white; border-width: 0.125vw; border-style: solid; border-color: white; width: auto; height: 5vh; border-bottom-left-radius: 0.5vw;">Followers not following</button>
      <ul>
       {% for username in following_not_followers %}
         <li>{{ username }}</li>
       {% endfor %}
      </ul>
-     <h1>Followers not following</h1>
+     
      <ul>
       {% for username in followers_not_following %}
         <li>{{ username }}</li>
       {% endfor %}
      </ul>
-    </form>
+    </div>
     <script src="/static/scripts/script.js"></script>
   </body>
 </html>
