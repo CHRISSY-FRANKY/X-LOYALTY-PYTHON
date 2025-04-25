@@ -23,13 +23,13 @@
      <button class="tab tab-right">Followers not following</button>
      <div class="username-list">
       {% for username in following_not_followers %}
-        <div>{{ username }}</div>
+        <div class="username-node">{{ username }}</div>
       {% endfor %}
      </div>
      
      <div class="username-list">
       {% for username in followers_not_following %}
-        <div>{{ username }}</div>
+        <div class="username-node">{{ username }}</div>
       {% endfor %}
      </div>
     </div>
