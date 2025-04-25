@@ -1,0 +1,11 @@
+.usernames {
+    position: absolute; 
+    top: 9vh;  
+    height: 88vh; 
+    width: calc(99.5vw - 6vh); 
+    left: 3vh; 
+    border-style:solid; 
+    border-color: white; 
+    border-width: 0.25vw; 
+    border-radius: 0.5vw; 
+}
