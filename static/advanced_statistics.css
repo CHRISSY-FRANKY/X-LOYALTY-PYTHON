@@ -1,4 +1,4 @@
-.usernames {
+div.usernames {
     position: absolute; 
     top: 9vh;  
     height: 88vh; 
@@ -27,4 +27,16 @@ button.tab {
 
 button.tab-right {
     left: calc(calc(99.5vw - 6vh) * 0.5);
+}
+
+div.username-list {
+    position: absolute; 
+    margin-left: 0.25vw; 
+    top: 6vh; 
+    width: calc(98.61vw - 6vh); 
+    height:80.625vh; 
+    border-style: solid; 
+    border-width: 0.25vw; 
+    border-color: dodgerblue; 
+    border-radius: 0.5vw;
 }
