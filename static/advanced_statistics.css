@@ -40,3 +40,15 @@ div.username-list {
     border-color: dodgerblue; 
     border-radius: 0.5vw;
 }
+
+div.username-node {
+    background-color: white;
+    width: calc(2vw + 2vh);
+    height: calc(2vw + 2vh);
+    color: dodgerblue;
+    border-color: dodgerblue;
+    border-style: solid;
+    border-width: 0.25vw;
+    border-radius: calc(1.25vw + 1vh);
+    text-align: center;
+}
