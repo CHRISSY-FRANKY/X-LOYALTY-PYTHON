@@ -25,6 +25,11 @@ button.tab {
     font-family: "Libre Franklin", sans-serif; /* keep the twitter font */
 }
 
+button.tab:hover {
+    background-color: lightgray;
+    border-color: lightgray;
+}
+
 button.tab-right {
     left: calc(calc(99.5vw - 6vh) * 0.5);
 }
@@ -52,3 +57,4 @@ div.username-node {
     border-radius: calc(1.25vw + 1vh);
     text-align: center;
 }
+
