@@ -19,9 +19,9 @@
     </header>
    
     <div class="usernames">
-     <button style="position: absolute; background-color: black; color: white; width: calc(calc(99.5vw - 6vh) * 0.5); height: 5vh; border-bottom-left-radius: 0.5vw; border-bottom-right-radius: 0.5vw; border-color: white; border-width: 0.5vh; border-style: solid;">Following not followers</button>
-     <button style="position: absolute; background-color: black; color: white; width: calc(calc(99.5vw - 6vh) * 0.5); height: 5vh; border-bottom-left-radius: 0.5vw; border-bottom-right-radius: 0.5vw; border-color: white; border-width: 0.5vh; border-style: solid; left: calc(calc(99.5vw - 6vh) * 0.5);">Followers not following</button>
-     <ul >
+     <button class="tab">Following not followers</button>
+     <button class="tab tab-right">Followers not following</button>
+     <ul>
       {% for username in following_not_followers %}
         <li>{{ username }}</li>
       {% endfor %}
