@@ -21,17 +21,17 @@
     <div class="usernames">
      <button class="tab">Following not followers</button>
      <button class="tab tab-right">Followers not following</button>
-     <ul>
+     <div class="username-list">
       {% for username in following_not_followers %}
-        <li>{{ username }}</li>
+        <div>{{ username }}</div>
       {% endfor %}
-     </ul>
+     </div>
      
-     <ul>
+     <div class="username-list">
       {% for username in followers_not_following %}
-        <li>{{ username }}</li>
+        <div>{{ username }}</div>
       {% endfor %}
-     </ul>
+     </div>
     </div>
     <script src="/static/scripts/script.js"></script>
   </body>
