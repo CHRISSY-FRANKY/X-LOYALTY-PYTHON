@@ -10,12 +10,13 @@ div.usernames {
     border-radius: 0.5vw; 
 }
 
-button.tab {
+input.tab {
+    border: none;
     position: absolute; 
     background-color: white; 
     color: black; 
-    width: calc(calc(98.5vw - 6vh) * 0.5); 
-    height: 5vh; 
+    width: calc(calc(97.5vw - 6vh) * 0.5); 
+    height: 4vh; 
     border-radius: 0.5vw;
     border-color: white; 
     border-width: 0.5vh; 
@@ -23,14 +24,20 @@ button.tab {
     margin-top: 0.25vw;
     border-style: solid;
     font-family: "Libre Franklin", sans-serif; /* keep the twitter font */
+    text-align: center;
+    caret-color: transparent;
 }
 
-button.tab:hover {
+input.tab::placeholder {
+    color: black;
+}
+
+input.tab:hover {
     background-color: lightgray;
     border-color: lightgray;
 }
 
-button.tab-right {
+input.tab-right {
     left: calc(calc(99.5vw - 6vh) * 0.5);
 }
 

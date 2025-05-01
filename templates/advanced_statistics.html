@@ -19,8 +19,10 @@
     </header>
    
     <div class="usernames">
-     <button class="tab">Following not followers</button>
-     <button class="tab tab-right">Followers not following</button>
+     <input class="tab" type="text" placeholder="Following not followers" readonly/>
+     <input class="tab tab-right" type="text" placeholder="Followers not following" readonly/>
+
+     
      <div class="username-list">
       {% for username in following_not_followers %}
         <div class="username-node">{{ username }}</div>
