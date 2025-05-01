@@ -11,11 +11,20 @@ div.usernames {
 }
 
 input.tab {
+    position: absolute; 
+    width: calc(calc(97.5vw - 6vh) * 0.5); 
+    height: 4vh; 
+    border-width: 0.5vh; 
+    margin-left: 0.25vw;
+    margin-top: 0.25vw;
+}
+
+label.tab {
     border: none;
     position: absolute; 
     background-color: white; 
     color: black; 
-    width: calc(calc(97.5vw - 6vh) * 0.5); 
+    width: calc(calc(98vw - 6vh) * 0.5); 
     height: 4vh; 
     border-radius: 0.5vw;
     border-color: white; 
@@ -25,20 +34,23 @@ input.tab {
     border-style: solid;
     font-family: "Libre Franklin", sans-serif; /* keep the twitter font */
     text-align: center;
-    caret-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-input.tab::placeholder {
-    color: black;
-}
-
-input.tab:hover {
+label.tab:hover {
     background-color: lightgray;
     border-color: lightgray;
 }
 
+label.tab-right {
+    left: calc(calc(99.25vw - 6vh) * 0.5);
+}
+
+
 input.tab-right {
-    left: calc(calc(99.5vw - 6vh) * 0.5);
+    left: calc(calc(99.25vw - 6vh) * 0.5);
 }
 
 div.username-list {
