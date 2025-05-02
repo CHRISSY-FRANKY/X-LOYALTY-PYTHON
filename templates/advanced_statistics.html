@@ -9,34 +9,38 @@
     <script src="https://unpkg.com/htmx.org@1.8.4"></script>
     <link rel="stylesheet" href="/static/style.css" />
     <link rel="stylesheet" href="/static/spinner.css" />
-    <link rel="stylesheet" href="/static/advanced_statistics.css"/>
+    <link rel="stylesheet" href="/static/advanced_statistics.css" />
   </head>
-  <body style="flex-direction: column;">
-    <header style="height: 5vh; width: 100vw;">
-     
+  <body style="flex-direction: column">
+    <header style="height: 5vh; width: 100vw">
       <!-- Include the X logo-->
-      <img style=" width: 5vh; height: 5vh;" src="../static/images/x.png" alt="X Logo" />
+      <img
+        style="width: 5vh; height: 5vh"
+        src="../static/images/x.png"
+        alt="X Logo"
+      />
     </header>
-   
-    <div class="usernames">
-     <input class="tab" id="tab1" type="checkbox"/>
-     <label class="tab" for="tab1">Following not followers</label>
-     <input class="tab tab-right" id="tab2" type="checkbox" placeholder="Followers not following"/>
-     <label class="tab tab-right" for="tab2">Followers not following</label>
 
-     
-     <div class="username-list">
-      {% for username in following_not_followers %}
+    <div class="usernames">
+      <input class="tab" id="tab1" type="checkbox" />
+      <label class="tab" for="tab1">Following not followers</label>
+      <input
+        class="tab tab-right"
+        id="tab2"
+        type="checkbox"
+        placeholder="Followers not following"
+      />
+      <label class="tab tab-right" for="tab2">Followers not following</label>
+
+      <div class="username-list">
+        {% for username in following_not_followers %}
         <div class="username-node">{{ username }}</div>
-      {% endfor %}
-     </div>
-     
-     <div class="username-list">
-      {% for username in followers_not_following %}
+        {% endfor %} {% for username in followers_not_following %}
         <div class="username-node">{{ username }}</div>
-      {% endfor %}
-     </div>
+        {% endfor %}
+      </div>
     </div>
     <script src="/static/scripts/script.js"></script>
+    <script src="/static/scripts/node-grid-layout.js"></script>
   </body>
 </html>
