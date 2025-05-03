@@ -5,7 +5,12 @@ function resizeUsernameNodes() {
     const parentRect = usernameList.getBoundingClientRect(); // get parent dimensions
     const parentLength = Math.min(parentRect.width, parentRect.height);
     const numNodes = nodes.length; // node count
-    const gridSize = Math.ceil(Math.sqrt(numNodes)); // calculate grid size
+    const gridSize = Math.min(4, Math.ceil(Math.sqrt(numNodes))); // calculate grid size with a limit
+    if (numNodes > 16) // add scroll bar if exceeds 16 nodes
+    {
+      usernameList.style.overflowY = "auto";
+      usernameList.style.overflowX = "hidden";
+    }
     const diameter = Math.min(parentLength / gridSize, parentLength / gridSize) * 0.96; // calculate diameter of each node
     usernameList.style.display = "grid"; // set list as grid
     usernameList.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`; // establish grid columns
