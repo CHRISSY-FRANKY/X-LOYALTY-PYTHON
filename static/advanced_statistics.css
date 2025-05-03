@@ -63,9 +63,7 @@ input.tab:checked + label.tab:hover {
     background-color: lightskyblue;
     border-color: lightskyblue;
     color: white;
-  }
-
-
+}
 
 div.username-list {
   position: absolute;
@@ -80,7 +78,7 @@ div.username-list {
 }
 
 div.username-node {
-  background-color: white;
+  background-color: transparent;
   width: calc(2vw + 2vh);
   height: calc(2vw + 2vh);
   color: dodgerblue;
@@ -89,4 +87,8 @@ div.username-node {
   border-width: 0.25vw;
   border-radius: calc(1.25vw + 1vh);
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
