@@ -22,21 +22,17 @@
     </header>
 
     <div class="usernames">
-      <input class="tab" id="tab1" type="checkbox" />
-      <label class="tab" for="tab1">Following not followers</label>
-      <input
-        class="tab tab-right"
-        id="tab2"
-        type="checkbox"
-        placeholder="Followers not following"
-      />
-      <label class="tab tab-right" for="tab2">Followers not following</label>
+      <input class="tab" id="tab1" type="checkbox"/>
+      <label class="tab" for="tab1" >Following not followers</label>
+      <input class="tab tab-right" id="tab2" type="checkbox"/>
+      <label class="tab tab-right" for="tab2" >Followers not following</label>
 
       <div class="username-list">
         {% for username in following_not_followers %}
-        <div class="username-node">{{ username }}</div>
-        {% endfor %} {% for username in followers_not_following %}
-        <div class="username-node">{{ username }}</div>
+        <div class="username-node followingNotFollower" >{{ username }}</div>
+        {% endfor %} 
+        {% for username in followers_not_following %}
+        <div class="username-node followerNotFollowing">{{ username }}</div>
         {% endfor %}
       </div>
     </div>
