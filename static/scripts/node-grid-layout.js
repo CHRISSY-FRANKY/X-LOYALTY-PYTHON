@@ -7,7 +7,7 @@ function handleNodeClick(event) { // click event handler for username nodes
   }
 }
 
-function handleButtonClick(_) {
+function handleButtonClick(_) { // click event handler for tab buttons
   resizeUsernameNodes();
 }
 
