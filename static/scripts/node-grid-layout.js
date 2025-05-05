@@ -11,13 +11,19 @@ function handleButtonClick(_) { // click event handler for tab buttons
   resizeUsernameNodes();
 }
 
-const followingNotFollowersButton = document.getElementById("tab1");
-const followersNotFollowingButton = document.getElementById("tab2");
-followersNotFollowingButton.addEventListener("click", handleButtonClick);
-followingNotFollowersButton.addEventListener("click", handleButtonClick);
-
 function resizeUsernameNodes() {
   const usernameList = document.querySelector(".username-list"); // get the list
+
+  const followingNotFollowersButton = document.getElementById("tab1");
+  const followersNotFollowingButton = document.getElementById("tab2");
+
+  if (!followingNotFollowersButton || !followersNotFollowingButton) {
+    console.warn('Tab buttons not found');
+    return;
+  }
+
+  followersNotFollowingButton.addEventListener("click", handleButtonClick);
+  followingNotFollowersButton.addEventListener("click", handleButtonClick);
 
   const isFollowersNotFollowingButtonChecked = followersNotFollowingButton.checked; // determine whether or not the buttons have been clicked
   const isFollowingNotFollowersButtonChecked = followingNotFollowersButton.checked;
