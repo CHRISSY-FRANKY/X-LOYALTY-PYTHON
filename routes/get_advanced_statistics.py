@@ -109,8 +109,6 @@ def extract_followers_usernames(username, followers_count):
         page.evaluate("window.scrollBy(0, window.innerHeight)") # scroll down to load more elements
         time.sleep(0.5) # wait for new content to load
     logger.info(f"Found {total_count} elements (unique usernames)")
-    for follower in followers_usernames:
-        print(follower)
     return followers_usernames
 
 @main_routes.route("/get_advanced_statistics", methods=["POST"])
