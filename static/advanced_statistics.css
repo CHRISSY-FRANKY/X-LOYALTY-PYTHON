@@ -88,7 +88,7 @@ div.username-node {
   border-width: 0.25vw;
   border-radius: calc(1.25vw + 1vh);
   text-align: center;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   cursor: pointer;
