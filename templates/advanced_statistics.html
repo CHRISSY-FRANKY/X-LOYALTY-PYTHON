@@ -21,11 +21,12 @@
     </header>
 
     <div class="usernames">
+      
       <input class="tab" id="tab1" type="checkbox"/>
       <label class="tab" for="tab1" >Following not followers</label>
       <input class="tab tab-right" id="tab2" type="checkbox"/>
       <label class="tab tab-right" for="tab2" >Followers not following</label>
-
+      <label class="instructions" id="instructions"><span>Select an Option Above!</span></label>
       <div class="username-list">
         {% for username in following_not_followers %}
         <div class="username-node followingNotFollower"><span>{{ username }}</span></div>

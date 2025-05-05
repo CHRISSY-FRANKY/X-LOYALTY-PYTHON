@@ -95,3 +95,17 @@ div.username-node span {
   position: relative;
   top: 44%;
 }
+
+label.instructions {
+  position: absolute;
+  top: 6vh;
+  height: 80.625vh;
+  width: calc(98.61vw - 6vh);
+  text-align: center;
+}
+
+label.instructions span{
+  position: relative;
+  top: 44%;
+  font-size: 5vh;
+}

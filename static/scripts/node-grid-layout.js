@@ -34,6 +34,7 @@ function resizeUsernameNodes() {
   if (nodes.length === 0) return; // no nodes, do nothing
   var numNodes = nodes.length; // node count
 
+  var nodeDisplayed = false;
   Array.from(followersNotFollowingNodes).forEach(node => { // hide/show usernames based on button checked
     if (!isFollowersNotFollowingButtonChecked) {
       node.style.display = "none";
@@ -41,6 +42,7 @@ function resizeUsernameNodes() {
     }
     else {
       node.style.display = "block";
+      nodeDisplayed = true;
     }
   });
 
@@ -51,9 +53,18 @@ function resizeUsernameNodes() {
     }
     else {
       node.style.display = "block";
+      nodeDisplayed = true;
     }
   })
-
+  const instructionsLabel = document.getElementById("instructions");
+  if (nodeDisplayed)
+  {
+    instructionsLabel.style.display = "none";
+  }
+  else
+  {
+    instructionsLabel.style.display = "block";
+  }
   const parentRect = usernameList.getBoundingClientRect(); // get parent dimensions
   const parentLength = Math.min(parentRect.width, parentRect.height);
 
