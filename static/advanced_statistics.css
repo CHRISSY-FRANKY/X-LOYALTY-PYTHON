@@ -88,9 +88,10 @@ div.username-node {
   border-width: 0.25vw;
   border-radius: calc(1.25vw + 1vh);
   text-align: center;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
   font-size: calc(1vh + 1vw);
+}
+
+div.username-node span {
+  position: relative;
+  top: 44%;
 }
