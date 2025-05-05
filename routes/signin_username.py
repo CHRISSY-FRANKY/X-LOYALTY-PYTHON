@@ -68,7 +68,7 @@ def signin_username():
     logger.info(f"LOADED https://x.com/{username}")
     page.wait_for_load_state("domcontentloaded") # wait for page to load
     
-    element = page.query_selector(".css-175oi2r.r-13awgt0.r-18u37iz.r-1w6e6rj") # find element
+    element = page.wait_for_selector(".css-175oi2r.r-13awgt0.r-18u37iz.r-1w6e6rj") # wait for element
     
     try:   
         if element: # get followers and following counts
