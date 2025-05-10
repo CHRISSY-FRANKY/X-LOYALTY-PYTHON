@@ -6,6 +6,7 @@ The pythonic version of [X-LOYALTY-C-SHARP](https://github.com/CHRISSY-FRANKY/X-
 - UPDATE the runtime lifecycle of the application with reduced/single sign in prompt
 - FIX the resizing to be consistent throughout the runtime lifecycle of the application
 - ENHANCE syntax by compartmentalize code
+- ENHANCE advanced statistics summary by integrating SQL
 - idk etc
 
 ## BE AWARE
